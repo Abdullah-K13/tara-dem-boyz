@@ -99,7 +99,7 @@ const Reviews = () => {
   return (
     <div className="pt-20 md:pt-24 bg-white text-neutral-900">
       {/* ===== HERO (black with gold accent) ===== */}
-      <section className="relative bg-black text-white py-24 mt-24 md:mt-32">
+      <section className="relative bg-black text-white py-24 mt-24 md:mt-10">
         <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_30%,rgba(234,179,8,0.25),transparent_60%)]" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
