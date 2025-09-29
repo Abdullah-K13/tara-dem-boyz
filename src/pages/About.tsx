@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, Users, Award, Handshake, MapPin, Clock, CheckCircle, ShieldCheck, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import newLogo from "@/assets/new-logo.svg";
+
 
 const About = () => {
   const values = [
@@ -46,7 +48,18 @@ const About = () => {
   return (
     <div className="pt-20 md:pt-24 bg-white text-neutral-900">
       {/* ===== HERO ===== */}
-      <section className="relative bg-black text-white py-24 mt-24 md:mt-10">
+      <section className="relative bg-white text-white py-24 mt-24 md:mt-10">
+        {/* Background logo watermark */}
+<div
+  className="absolute inset-0 flex items-center justify-center pointer-events-none select-none mt-7"
+  aria-hidden="true"
+>
+  <img
+    src={newLogo}
+    alt=""
+    className="w-[55vw] max-w-[550px] opacity-[0.1] blur-[0.5px] object-contain"
+  />
+</div>
         <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_30%,rgba(234,179,8,0.28),transparent_60%)]" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -55,10 +68,10 @@ const About = () => {
             transition={{ duration: 0.8, ease: EASE }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-black mb-6">
               About <span className="text-yellow-400">Tara & Dem Boyz</span>
             </h1>
-            <p className="text-xl text-neutral-300 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl leading-relaxed max-w-3xl mx-auto text-black">
               Professional commercial & residential janitorial services—rooted in family, driven by integrity,
               and dedicated to spotless, safe environments.
             </p>

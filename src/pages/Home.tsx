@@ -91,7 +91,7 @@ const Home = () => {
           />
         </div>
 
-      <div className="relative mt-24 md:mt-6 bg-black text-white">
+      <div className="relative mt-24 md:mt-10 bg-black text-white">
   <div className="container mx-auto px-4">
     <div className="grid lg:grid-cols-2 gap-10 items-center min-h-[80vh] py-16">
       {/* Copy */}

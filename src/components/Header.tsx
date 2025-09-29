@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import tdbLogo from "@/assets/tdb-logo.png";
+import newLogo from "@/assets/new-logo.svg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -59,13 +59,13 @@ const Header = () => {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-4">
-            <img 
-              src={tdbLogo} 
-              alt="Tara & Dem Boyz Logo" 
-              className="w-16 h-16 object-contain"
+            <img
+              src={newLogo}
+              alt="Tara & Dem Boyz Logo"
+              className="w-24 h-24 sm:w-28 sm:h-28 object-contain transition-transform duration-300 hover:scale-105"
             />
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-foreground tracking-tight">
+              <h1 className="text-2xl font-bold text-foreground tracking-tight">
                 Tara & Dem Boyz
               </h1>
               <p className="text-sm text-muted-foreground font-medium">
@@ -101,8 +101,8 @@ const Header = () => {
 
           {/* CTA Button & Mobile Menu */}
           <div className="flex items-center space-x-4">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               variant="modern"
               className="transition-bounce hover:scale-105"
             >
