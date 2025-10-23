@@ -43,7 +43,7 @@ const Header = () => {
               className="flex items-center space-x-2 hover:text-primary transition-smooth"
             >
               <Phone className="w-4 h-4" />
-              <span>(123) 456-7890</span>
+              <span>912-259-2825</span>
             </a>
             <a
               href="mailto:info@taraanddemboyz.com"

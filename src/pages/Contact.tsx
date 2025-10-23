@@ -8,19 +8,15 @@ import { Phone, Mail, MapPin, Clock, Send, MessageSquare, Calendar, CheckCircle 
 
 const Contact = () => {
   const contactInfo = [
-    { icon: Phone, title: "Call Us", details: "(123) 456-7890", subtitle: "Monday - Friday: 8AM - 6PM", action: "tel:+1234567890" },
+    { icon: Phone, title: "Call Us", details: "912-259-2825", subtitle: "Monday - Friday: 8AM - 6PM", action: "tel:+1234567890" },
     { icon: Mail, title: "Email Us", details: "info@taraanddemboyz.com", subtitle: "We respond within 24 hours", action: "mailto:info@taraanddemboyz.com" },
-    { icon: MapPin, title: "Service Area", details: "Southeast Coastal Region", subtitle: "Serving residential & commercial clients", action: null },
+    { icon: MapPin, title: "Service Area", details: "Hinesville, Savannah & Surrounding GA Coast", subtitle: "Serving residential & commercial clients", action: null },
     { icon: Clock, title: "Business Hours", details: "Mon-Fri: 8AM-6PM", subtitle: "Weekend appointments available", action: null },
   ];
 
   const serviceAreas = [
-    "Charleston, SC",
+    "Hinesville, GA",
     "Savannah, GA",
-    "Jacksonville, FL",
-    "Wilmington, NC",
-    "Myrtle Beach, SC",
-    "Virginia Beach, VA",
     "And surrounding areas",
   ];
 
@@ -131,7 +127,7 @@ const Contact = () => {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone" className="text-neutral-900 font-medium">Phone Number *</Label>
-                        <Input id="phone" type="tel" placeholder="(123) 456-7890" className="transition-transform focus:scale-[1.02]" />
+                        <Input id="phone" type="tel" placeholder="912-259-2825" className="transition-transform focus:scale-[1.02]" />
                       </div>
                     </div>
 
@@ -278,7 +274,7 @@ const Contact = () => {
                   <a href="tel:+1234567890">
                     <Button className="w-full bg-black text-white hover:bg-yellow-500 hover:text-black transition-all">
                       <Phone className="mr-2 w-5 h-5" />
-                      Call (123) 456-7890
+                      Call 912-259-2825
                     </Button>
                   </a>
                 </CardContent>

@@ -123,7 +123,7 @@ const About = () => {
                       "We don't just clean—we care for the spaces where families thrive and businesses grow."
                     </blockquote>
                     <div className="border-t border-black/10 pt-6">
-                      <p className="font-semibold">Tara Johnson</p>
+                      <p className="font-semibold">Tara Ferrer-Carrington</p>
                       <p className="text-neutral-600">Founder & CEO</p>
                     </div>
                   </div>

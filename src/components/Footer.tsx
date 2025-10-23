@@ -107,7 +107,7 @@ const Footer = () => {
                 className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-smooth"
               >
                 <Phone className="w-5 h-5" />
-                <span>(123) 456-7890</span>
+                <span>912-259-2825</span>
               </a>
               <a
                 href="mailto:info@taraanddemboyz.com"

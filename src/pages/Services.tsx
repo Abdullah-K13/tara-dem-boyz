@@ -51,7 +51,6 @@ const Services = () => {
         "Interior and exterior window cleaning",
         "Screen cleaning and maintenance",
         "Sill and frame cleaning",
-        "High-rise and commercial buildings",
         "Residential homes and condos",
         "Streak-free guarantee",
       ],
@@ -77,10 +76,8 @@ const Services = () => {
       description: "Specialized floor maintenance and carpet cleaning services",
       features: [
         "Hardwood floor cleaning and polishing",
-        "Tile and grout deep cleaning",
         "Carpet shampooing and stain removal",
         "Strip and wax services",
-        "Stone and marble care",
         "Regular maintenance programs",
       ],
       pricing: "Starting at $0.75/sq ft",
@@ -90,10 +87,8 @@ const Services = () => {
       title: "Specialized Services",
       description: "Customized cleaning solutions for unique requirements",
       features: [
-        "Post-construction cleanup",
         "Event cleaning services",
         "Pressure washing",
-        "Upholstery cleaning",
         "Emergency cleanup services",
         "One-time deep cleaning",
       ],
@@ -162,8 +157,8 @@ const Services = () => {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: index * 0.1, ease: EASE }}
               >
-                <Card className="h-full border border-black/10 hover:border-yellow-500/50 transition-all shadow-sm hover:shadow-xl hover:-translate-y-1 bg-white">
-                  <CardContent className="p-8">
+                <Card className="h-full min-h-[420px] border border-black/10 hover:border-yellow-500/50 transition-all shadow-sm hover:shadow-xl hover:-translate-y-1 bg-white">
+                  <CardContent className="p-8 h-full flex flex-col">
                     <div className="flex items-start gap-4 mb-6">
                       <div className="w-16 h-16 bg-yellow-400/20 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-yellow-400/30">
                         <service.icon className="w-8 h-8 text-yellow-600" />
@@ -174,7 +169,7 @@ const Services = () => {
                       </div>
                     </div>
 
-                    <div className="space-y-3 mb-6">
+                    <div className="space-y-3 mb-6 flex-1">
                       {service.features.map((f, i) => (
                         <div key={i} className="flex items-center gap-3">
                           <CheckCircle className="w-5 h-5 text-yellow-500" />
@@ -183,11 +178,8 @@ const Services = () => {
                       ))}
                     </div>
 
-                    <div className="border-t border-black/10 pt-6 flex items-center justify-between">
-                      <div>
-                        <p className="text-sm text-neutral-500 mb-1">Starting Price</p>
-                        <p className="text-2xl font-bold text-yellow-600">{service.pricing}</p>
-                      </div>
+                    <div className="mt-auto border-t border-black/10 pt-6 flex items-center justify-between">
+                      
                       <Button className="bg-black text-white hover:bg-yellow-500 hover:text-black transition-all">
                         Get Quote
                         <ArrowRight className="ml-2 w-4 h-4" />
@@ -223,7 +215,7 @@ const Services = () => {
                       className="flex items-center justify-between p-4 rounded-lg border border-transparent hover:border-yellow-500/40 hover:bg-yellow-50 transition-all"
                     >
                       <span className="font-medium text-neutral-900">{addon.name}</span>
-                      <span className="font-bold text-yellow-600">{addon.price}</span>
+                      {/* <span className="font-bold text-yellow-600">{addon.price}</span> */}
                     </motion.div>
                   ))}
                 </div>
@@ -283,7 +275,7 @@ const Services = () => {
                 </Button>
               </Link>
               <Button className="backdrop-blur border border-black/20 text-black hover:bg-black/5">
-                Call (123) 456-7890
+                Call 912-259-2825
               </Button>
             </div>
           </motion.div>
