@@ -101,6 +101,7 @@ const Header = () => {
 
           {/* CTA Button & Mobile Menu */}
           <div className="flex items-center space-x-4">
+            <a href="tel:9122592825" >
             <Button
               size="lg"
               variant="modern"
@@ -108,7 +109,7 @@ const Header = () => {
             >
               Get Free Quote
             </Button>
-
+</a>
             {/* Mobile Menu Button */}
             <button
               className="lg:hidden p-2 text-foreground hover:text-primary transition-smooth"

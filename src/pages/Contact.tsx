@@ -5,8 +5,39 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send, MessageSquare, Calendar, CheckCircle } from "lucide-react";
+import { useState } from "react";
+
 
 const Contact = () => {
+
+  const [sending, setSending] = useState(false);
+
+  const handleQuoteSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+
+    const formData = new FormData(e.currentTarget);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch("/contact.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || "Failed to send");
+
+      alert("Thanks! Your request was sent. We'll get back to you soon.");
+      e.currentTarget.reset();
+    } catch (err) {
+      console.error(err);
+      alert(err.message || "Sorry, something went wrong.");
+    } finally {
+      setSending(false);
+    }
+  };
   const contactInfo = [
     { icon: Phone, title: "Call Us", details: "912-259-2825", subtitle: "Monday - Friday: 8AM - 6PM", action: "tel:+1234567890" },
     { icon: Mail, title: "Email Us", details: "info@taraanddemboyz.com", subtitle: "We respond within 24 hours", action: "mailto:info@taraanddemboyz.com" },
@@ -103,106 +134,105 @@ const Contact = () => {
                   Fill out the form below and we'll get back to you within 24 hours with a personalized quote.
                 </p>
               </div>
+<Card className="shadow-xl border border-black/10 bg-white">
+  <CardContent className="p-8">
+    <form className="space-y-6" onSubmit={handleQuoteSubmit}>
+      {/* Name and Email */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <Label htmlFor="firstName">First Name *</Label>
+          <Input id="firstName" name="firstName" required placeholder="Enter your first name" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="lastName">Last Name *</Label>
+          <Input id="lastName" name="lastName" required placeholder="Enter your last name" />
+        </div>
+      </div>
 
-              <Card className="shadow-xl border border-black/10 bg-white">
-                <CardContent className="p-8">
-                  <form className="space-y-6">
-                    {/* Name and Email */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="firstName" className="text-neutral-900 font-medium">First Name *</Label>
-                        <Input id="firstName" placeholder="Enter your first name" className="transition-transform focus:scale-[1.02]" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="lastName" className="text-neutral-900 font-medium">Last Name *</Label>
-                        <Input id="lastName" placeholder="Enter your last name" className="transition-transform focus:scale-[1.02]" />
-                      </div>
-                    </div>
+      {/* Email and Phone */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <Label htmlFor="email">Email Address *</Label>
+          <Input id="email" name="email" type="email" required placeholder="your@email.com" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="phone">Phone Number *</Label>
+          <Input id="phone" name="phone" type="tel" required placeholder="912-259-2825" />
+        </div>
+      </div>
 
-                    {/* Email and Phone */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="email" className="text-neutral-900 font-medium">Email Address *</Label>
-                        <Input id="email" type="email" placeholder="your@email.com" className="transition-transform focus:scale-[1.02]" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-neutral-900 font-medium">Phone Number *</Label>
-                        <Input id="phone" type="tel" placeholder="912-259-2825" className="transition-transform focus:scale-[1.02]" />
-                      </div>
-                    </div>
+      {/* Property Type and Address */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <Label htmlFor="propertyType">Property Type *</Label>
+          <select id="propertyType" name="propertyType" required className="w-full px-3 py-2 bg-white border border-black/10 rounded-md">
+            <option value="">Select property type</option>
+            <option value="residential">Residential Home</option>
+            <option value="apartment">Apartment/Condo</option>
+            <option value="office">Office Building</option>
+            <option value="retail">Retail Space</option>
+            <option value="restaurant">Restaurant</option>
+            <option value="medical">Medical Facility</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="address">Property Address *</Label>
+          <Input id="address" name="address" required placeholder="Enter property address" />
+        </div>
+      </div>
 
-                    {/* Property Type and Address */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="propertyType" className="text-neutral-900 font-medium">Property Type *</Label>
-                        <select id="propertyType" className="w-full px-3 py-2 bg-white border border-black/10 rounded-md text-neutral-900 transition-transform focus:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-yellow-400">
-                          <option value="">Select property type</option>
-                          <option value="residential">Residential Home</option>
-                          <option value="apartment">Apartment/Condo</option>
-                          <option value="office">Office Building</option>
-                          <option value="retail">Retail Space</option>
-                          <option value="restaurant">Restaurant</option>
-                          <option value="medical">Medical Facility</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="address" className="text-neutral-900 font-medium">Property Address *</Label>
-                        <Input id="address" placeholder="Enter property address" className="transition-transform focus:scale-[1.02]" />
-                      </div>
-                    </div>
+      {/* Service Needed and Square Footage */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <Label htmlFor="service">Service Needed *</Label>
+          <select id="service" name="service" required className="w-full px-3 py-2 bg-white border border-black/10 rounded-md">
+            <option value="">Select service type</option>
+            <option value="residential-regular">Regular Residential Cleaning</option>
+            <option value="residential-deep">Deep Cleaning (Residential)</option>
+            <option value="commercial-regular">Regular Commercial Cleaning</option>
+            <option value="commercial-deep">Deep Cleaning (Commercial)</option>
+            <option value="window">Window Cleaning</option>
+            <option value="carpet">Floor & Carpet Care</option>
+            <option value="sanitization">Deep Sanitization</option>
+            <option value="construction">Post-Construction Cleanup</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="size">Approximate Square Footage</Label>
+          <Input id="size" name="size" placeholder="e.g., 2,500 sq ft" />
+        </div>
+      </div>
 
-                    {/* Service Needed and Square Footage */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="service" className="text-neutral-900 font-medium">Service Needed *</Label>
-                        <select id="service" className="w-full px-3 py-2 bg-white border border-black/10 rounded-md text-neutral-900 transition-transform focus:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-yellow-400">
-                          <option value="">Select service type</option>
-                          <option value="residential-regular">Regular Residential Cleaning</option>
-                          <option value="residential-deep">Deep Cleaning (Residential)</option>
-                          <option value="commercial-regular">Regular Commercial Cleaning</option>
-                          <option value="commercial-deep">Deep Cleaning (Commercial)</option>
-                          <option value="window">Window Cleaning</option>
-                          <option value="carpet">Floor & Carpet Care</option>
-                          <option value="sanitization">Deep Sanitization</option>
-                          <option value="construction">Post-Construction Cleanup</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="size" className="text-neutral-900 font-medium">Approximate Square Footage</Label>
-                        <Input id="size" placeholder="e.g., 2,500 sq ft" className="transition-transform focus:scale-[1.02]" />
-                      </div>
-                    </div>
+      {/* Frequency */}
+      <div className="space-y-2">
+        <Label htmlFor="frequency">Cleaning Frequency *</Label>
+        <select id="frequency" name="frequency" required className="w-full px-3 py-2 bg-white border border-black/10 rounded-md">
+          <option value="">Select frequency</option>
+          <option value="weekly">Weekly</option>
+          <option value="biweekly">Bi-weekly</option>
+          <option value="monthly">Monthly</option>
+          <option value="quarterly">Quarterly</option>
+          <option value="one-time">One-time Service</option>
+          <option value="as-needed">As Needed</option>
+        </select>
+      </div>
 
-                    {/* Frequency */}
-                    <div className="space-y-2">
-                      <Label htmlFor="frequency" className="text-neutral-900 font-medium">Cleaning Frequency *</Label>
-                      <select id="frequency" className="w-full px-3 py-2 bg-white border border-black/10 rounded-md text-neutral-900 transition-transform focus:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-yellow-400">
-                        <option value="">Select frequency</option>
-                        <option value="weekly">Weekly</option>
-                        <option value="biweekly">Bi-weekly</option>
-                        <option value="monthly">Monthly</option>
-                        <option value="quarterly">Quarterly</option>
-                        <option value="one-time">One-time Service</option>
-                        <option value="as-needed">As Needed</option>
-                      </select>
-                    </div>
+      {/* Message */}
+      <div className="space-y-2">
+        <Label htmlFor="message">Additional Details</Label>
+        <Textarea id="message" name="message" rows={4} placeholder="Tell us about any special requirements..." />
+      </div>
 
-                    {/* Message */}
-                    <div className="space-y-2">
-                      <Label htmlFor="message" className="text-neutral-900 font-medium">Additional Details</Label>
-                      <Textarea id="message" placeholder="Tell us about any special requirements, preferences, or questions you have..." rows={4} className="transition-transform focus:scale-[1.02]" />
-                    </div>
+      <Button type="submit" disabled={sending} className="w-full bg-black text-white hover:bg-yellow-500 hover:text-black" size="lg">
+        <Send className="mr-2 w-5 h-5" />
+        {sending ? "Sending..." : "Send Request for Quote"}
+      </Button>
+    </form>
+  </CardContent>
+</Card>
 
-                    {/* Submit Button */}
-                    <Button type="submit" className="w-full bg-black text-white hover:bg-yellow-500 hover:text-black transition-all" size="lg">
-                      <Send className="mr-2 w-5 h-5" />
-                      Send Request for Quote
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
             </motion.div>
 
             {/* Service Areas and Additional Info */}

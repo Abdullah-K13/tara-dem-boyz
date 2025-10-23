@@ -377,13 +377,16 @@ const Home = () => {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
+              <a href="tel:9122592825" >
               <Button
                 size="xl"
                 variant="glass"
                 className="backdrop-blur border border-black/20 text-black hover:bg-black/5"
               >
-                Call (123) 456‑7890
+                
+                912-259-2825
               </Button>
+              </a>
             </div>
           </motion.div>
         </div>

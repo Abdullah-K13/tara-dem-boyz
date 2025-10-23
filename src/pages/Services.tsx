@@ -179,12 +179,14 @@ const Services = () => {
                     </div>
 
                     <div className="mt-auto border-t border-black/10 pt-6 flex items-center justify-between">
-                      
-                      <Button className="bg-black text-white hover:bg-yellow-500 hover:text-black transition-all">
-                        Get Quote
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </Button>
-                    </div>
+  <a href="tel:9122592825" className="w-full">
+    <Button className="w-full bg-black text-white hover:bg-yellow-500 hover:text-black transition-all">
+      Call for Quote
+      <ArrowRight className="ml-2 w-4 h-4" />
+    </Button>
+  </a>
+</div>
+
                   </CardContent>
                 </Card>
               </motion.div>
@@ -194,36 +196,44 @@ const Services = () => {
       </section>
 
       {/* ===== ADD-ONS ===== */}
-      <section className="py-24 bg-neutral-50">
-        <div className="container mx-auto px-4">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Additional <span className="text-yellow-600">Services</span></h2>
-            <p className="text-xl text-neutral-600">Enhance your cleaning package with these add-ons.</p>
-          </motion.div>
+    <section className="py-24 bg-neutral-50">
+  <div className="container mx-auto px-4">
+    <motion.div {...fadeInUp} className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        Additional <span className="text-yellow-600">Services</span>
+      </h2>
+      <p className="text-xl text-neutral-600">
+        Enhance your cleaning package with these add-ons.
+      </p>
+    </motion.div>
 
-          <div className="max-w-4xl mx-auto">
-            <Card className="border border-black/10 shadow-sm hover:shadow-md">
-              <CardContent className="p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {addOns.map((addon, index) => (
-                    <motion.div
-                      key={addon.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.6, delay: index * 0.05, ease: EASE }}
-                      className="flex items-center justify-between p-4 rounded-lg border border-transparent hover:border-yellow-500/40 hover:bg-yellow-50 transition-all"
-                    >
-                      <span className="font-medium text-neutral-900">{addon.name}</span>
-                      {/* <span className="font-bold text-yellow-600">{addon.price}</span> */}
-                    </motion.div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+    <div className="max-w-4xl mx-auto">
+      <Card className="border border-black/10 shadow-sm hover:shadow-md">
+        <CardContent className="p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {addOns.map((addon, index) => (
+              <motion.div
+                key={addon.name}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.05, ease: EASE }}
+                className="flex items-center justify-center p-4 rounded-lg 
+                           border border-transparent hover:border-yellow-500/40 
+                           hover:bg-yellow-50 transition-all text-center"
+              >
+                <span className="text-neutral-900 font-medium">
+                  {addon.name}
+                </span>
+              </motion.div>
+            ))}
           </div>
-        </div>
-      </section>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>
+
 
       {/* ===== PROCESS ===== */}
       <section className="py-24">
